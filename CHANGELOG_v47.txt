@@ -1,0 +1,4 @@
+Colorinka v4.7
+- Removed class="game-root" entirely from index.html and replaced with id="appRoot".
+- Updated all CSS/JS references from .game-root to #appRoot.
+- This ensures no visible debug class appears anymore.

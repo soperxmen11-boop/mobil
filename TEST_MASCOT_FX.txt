@@ -1,0 +1,6 @@
+
+Mascot FX Robust Bridge — Quick Test
+1) In Mascot screen, click a card with data-correct="true" → should pop+confetti.
+2) Click a card with data-correct="false" → should shake.
+3) If your code toggles CSS classes 'correct' / 'wrong', effects should auto trigger.
+4) You can trigger manually: window.dispatchEvent(new CustomEvent('mascot:result',{detail:{correct:true, el:document.querySelector('.yourCard')}}))

@@ -1,0 +1,1 @@
+v4.12: ChevronBuster (prepaint hide + remove '>' text nodes & pseudo content).

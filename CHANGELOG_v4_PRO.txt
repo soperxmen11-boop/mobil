@@ -1,0 +1,5 @@
+Colorinka v4-PRO
+- Animated splash screen (logo pop + floating stars), auto-hides.
+- Colorinka icons ensured (192/512) and manifest updated.
+- Legacy header bar hidden to avoid overlap.
+- (Previous fixes kept): Mascot FX bridge, bg music on first interaction, SFX integration points.

@@ -1,0 +1,5 @@
+Removed all references of 'game-root' across HTML/CSS/JS.
+Changed files:
+ - offline.html
+ - privacy.html
+ - jghg-main/index.html

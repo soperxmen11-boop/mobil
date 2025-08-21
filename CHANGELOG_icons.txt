@@ -1,0 +1,1 @@
+Integrated Colorinka text icons (192/512), updated manifest & head links.

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <meta name="theme-color" content="#071028">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="ui/bg.css">
+  <link rel="stylesheet" href="ui/menu.css">
+  <link rel="stylesheet" href="ui/side-menu.css">
+  <link rel="stylesheet" href="ui/fx.css">
+  <link rel="stylesheet" href="ui/advanced.css">
+  <link rel="stylesheet" href="ui/shop.css">
+  <link rel="stylesheet" href="ui/game-effects.css">
+  <link rel="stylesheet" href="ui/progress.css">
+  <link rel="stylesheet" href="ui/achievements.css">
+  <link rel="stylesheet" href="ui/stats.css">
+  <link rel="stylesheet" href="ui/timer.css">
+<link rel="manifest" href="manifest.webmanifest"> <!--  UPGRADE -->
+<meta name="theme-color" content="#0b1020"> <!--  UPGRADE -->
+<meta name="description" content=" — kid-friendly timed puzzles."> <!--  UPGRADE -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"> <!--  UPGRADE -->
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png"> <!--  UPGRADE -->
+<meta name="apple-mobile-web-app-capable" content="yes"> <!--  UPGRADE -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!--  UPGRADE -->
+<style>
+/*  UPGRADE */ 
+#splashOverlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#4587FF 0%,#2ED5A2 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
+#splashOverlay img{width:min(38vh,320px);height:auto;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35))}
+#splashOverlay .brand{font:800 32px/1.2 system-ui,Segoe UI,Roboto,Poppins,sans-serif;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}</style>
+<style>
+/* KIDS PRO UPGRADE: Animated Splash for  */
+#splashOverlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#4587FF 0%,#2ED5A2 100%);overflow:hidden;display:grid;place-items:center}
+#splashOverlay .logo{width:min(40vh,340px);height:min(40vh,340px);border-radius:22%;background:url('assets/icons/icon-512.png') center/cover no-repeat;
+  animation: logoPop .8s cubic-bezier(.2,.9,.2,1) both .2s, floatY 2.6s ease-in-out infinite 1.2s;}
+@keyframes logoPop{0%{transform:scale(.7);filter:blur(4px);opacity:0} 60%{transform:scale(1.06);filter:blur(0);opacity:1} 100%{transform:scale(1)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.star{position:absolute;width:10px;height:10px;border-radius:50%;opacity:.95}
+@keyframes starDrift{to{transform:translate(var(--dx),var(--dy)) rotate(180deg);opacity:0}}
+</style>
+
+    <style>
+    /* KIDS PRO UPGRADE: Playful Logo Splash & Menu */
+    #splashOverlay{position:fixed;inset:0;z-index:9999;background:linear-gradient(180deg,#4587FF 0%,#2ED5A2 100%);overflow:hidden;display:grid;place-items:center}
+    #splashOverlay .logo{width:min(42vh,360px);height:min(42vh,360px);background:url('assets/branding/colorinka-logo.png') center/contain no-repeat;
+      animation: logoPop .8s cubic-bezier(.2,.9,.2,1) both .2s, floatY 2.6s ease-in-out infinite 1.2s;}
+    @keyframes logoPop{0%{transform:scale(.7);filter:blur(4px);opacity:0} 60%{transform:scale(1.06);filter:blur(0);opacity:1} 100%{transform:scale(1)}}
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+    /* Menu brand */
+    #menuBrand{position:absolute;left:50%;transform:translateX(-50%);top:18px;z-index:50;display:none}
+    #menuBrand img{width:140px;height:auto;filter:drop-shadow(0 6px 20px rgba(0,0,0,.3))}
+    </style>
+    
+
+<style>/* CHEVRONBUSTER: prepaint hide */ body{visibility:hidden}</style>
+  <link rel="stylesheet" href="ui/upgrade-header.css">
+  <link rel="stylesheet" href="ui/mobile-fix.css">
+</head>
+<body id="appRoot">
+
+<div id="splashOverlay" aria-label=" is loading">
+  <div class="logo" role="img" aria-label=" logo"></div>
+</div>
+
+
+
+</div>>
+  <div id="toasts" class="toasts"></div>
+  <header class="topbar">
+<div class="brand-left">
+    <img src="assets/icons/logo.png" alt="Colorinka" class="brand-logo">
+  </div>
+  <div class="toolbar-center">
+    <div class="coins">🪙 <b id="coins">0</b></div>
+    <label>Music</label><input id="volMusic" type="range" min="0" max="1" step="0.01" value="0.18">
+    <label>SFX</label><input id="volSfx" type="range" min="0" max="1" step="0.01" value="0.5">
+    <button id="btnMute" class="btn subtle">🔊</button>
+  </div>
+  <div class="spacer-right"></div>
+  </header>
+
+  <!-- HOME -->
+  <section id="homePage" class="page active">
+    <h1 class="title">Choose your mode</h1>
+    <div class="menu">
+      <button class="menu-btn primary" data-nav="colorPage">🎨 Color Match</button>
+      <button class="menu-btn" data-nav="mascotPage">🐾 Mascot Match</button>
+      <button class="menu-btn" data-nav="shopPage">🛍️ Shop</button>
+      <button class="menu-btn" data-nav="settingsPage">⚙️ Settings</button>
+      <button class="menu-btn" data-nav="leaderboardPage">🏆 Leaderboard</button>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="settingsPage" class="page">
+    <h2>Settings</h2>
+    <div class="grid2">
+      <div class="card">
+        <div class="row"><label>Duration</label><select id="duration" class="select"><option>30</option><option>45</option><option selected>60</option></select></div>
+        <div class="row"><label>Difficulty</label><select id="difficulty" class="select"><option value="easy">Easy</option><option selected value="normal">Normal</option><option value="hard">Hard</option></select></div>
+        <div class="row"><label>Theme</label><select id="theme" class="select"><option value="blue" selected>Blue</option><option value="purple">Purple</option><option value="teal">Teal</option></select></div>
+        <div class="row"><label>Voice</label><select id="voice" class="select"><option value="en" selected>English</option><option value="ar">Arabic</option><option value="off">Off</option></select></div>
+      </div>
+      <div class="card">
+        <button class="btn" data-nav="homePage">⬅ Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shopPage" class="page">
+    <h2>Shop</h2>
+    <div id="shopGrid" class="shop-grid"></div>
+    <div class="row center"><button class="btn" data-nav="homePage">⬅ Back</button></div>
+  </section>
+
+  <!-- LEADERBOARD -->
+  <section id="leaderboardPage" class="page">
+    <h2>Leaderboard</h2>
+    <ol id="lbList"></ol>
+    <div class="row center"><button class="btn" data-nav="homePage">⬅ Back</button></div>
+  </section>
+
+  <!-- COLOR GAME -->
+  <section id="colorPage" class="page">
+    <div class="hud">
+      <div>Level: <b id="level">1</b></div>
+      <div>Time: <b id="time">0</b>s</div>
+      <div>Score: <b id="score">0</b></div>
+      <div>Best: <b id="best">0</b></div>
+    </div>
+    
+    <div id="menuBrand"><img src="assets/branding/colorinka-logo.png" alt="Colorinka"/></div>
+    
+    <div class="card playcard">
+      <div id="promptWord" class="gradient">BLUE</div>
+      <div id="colorBox" class="box"></div>
+      <div id="feedback" class="feedback"></div>
+      <div class="actions">
+        <button id="btnNo" class="btn pill">❌ Not Match</button>
+        <button id="btnYes" class="btn pill primary">✅ Match</button>
+      </div>
+    </div>
+    
+    <div id="menuBrand"><img src="assets/branding/colorinka-logo.png" alt="Colorinka"/></div>
+    
+    <div class="row center"><button class="btn" data-nav="homePage">🏠 Menu</button><button id="btnRestart" class="btn primary">🔁 Restart</button></div>
+  </section>
+
+  <!-- MASCOT GAME -->
+  <section id="mascotPage" class="page">
+    <div class="hud">
+      <div>Level: <b id="levelM">1</b></div>
+      <div>Time: <b id="timeM">0</b>s</div>
+      <div>Score: <b id="scoreM">0</b></div>
+    </div>
+    
+    <div id="menuBrand"><img src="assets/branding/colorinka-logo.png" alt="Colorinka"/></div>
+    
+    <div class="card playcard">
+      <div id="promptMascot" class="gradient">LION</div>
+      <div id="emojiBox" class="emoji">🦁</div>
+      <div id="feedbackM" class="feedback"></div>
+      <div class="actions">
+        <button id="btnNoM" class="btn pill">❌ Not Match</button>
+        <button id="btnYesM" class="btn pill primary">✅ Match</button>
+      </div>
+    </div>
+    
+    <div id="menuBrand"><img src="assets/branding/colorinka-logo.png" alt="Colorinka"/></div>
+    
+    <div class="row center"><button class="btn" data-nav="homePage">🏠 Menu</button><button id="btnRestartM" class="btn primary">🔁 Restart</button></div>
+  </section>
+
+  <footer class="footer"><small> — PWA • Offline • Shop • Settings</small></footer>
+
+  <script src="game.js" defer></script>
+  <script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js'))}</script>
+  <div id="ui-bg" aria-hidden="true"></div>
+  <script src="ui/menu_init.js" defer></script>
+  <script src="ui/audio.js" defer></script>
+  <script src="ui/particles.js" defer></script>
+  <script src="ui/sfx.js" defer></script>
+  <script src="ui/fx.js" defer></script>
+  <script src="ui/advanced.js" defer></script>
+  <script src="ui/shop.js" defer></script>
+  <script src="ui/game-effects.js" defer></script>
+  <script src="ui/progress.js" defer></script>
+  <script src="ui/achievements.js" defer></script>
+  <script src="ui/timer.js" defer></script>
+<div id="shopPanel" class="panel hidden"> <!--  UPGRADE -->
+  <h3>Shop</h3>
+  <button id="btnShopClose" class="btn-secondary">Close</button>
+</div>
+
+<script>
+/*  UPGRADE */
+window.addEventListener('load',()=>{
+  const el=document.getElementById('splashOverlay');
+  setTimeout(()=>{if(el){el.style.animation='fadeOut .5s ease forwards';setTimeout(()=>el.remove(),650)}},700);
+});
+</script>
+
+<script>
+/* KIDS PRO UPGRADE: splash animator */
+(function(){
+  const root = document.getElementById('splashOverlay');
+  if(root){
+    const colors = ['#FFD54F','#ffffff','#2ED5A2','#42A5F5'];
+    for(let i=0;i<36;i++){
+      const s=document.createElement('div');
+      s.className='star';
+      const c = colors[i%colors.length];
+      s.style.background=c;
+      const x = Math.random()*100, y=Math.random()*100;
+      s.style.left = x+'%'; s.style.top = y+'%';
+      const dx = (Math.random()*2-1)*120 + 'px';
+      const dy = (Math.random()*-160-40) + 'px';
+      s.style.setProperty('--dx', dx);
+      s.style.setProperty('--dy', dy);
+      const dur = 900 + Math.random()*1200;
+      s.style.animation = `starDrift ${dur}ms ease-out forwards ${Math.random()*800}ms`;
+      root.appendChild(s);
+    }
+    // Auto-hide splash
+    setTimeout(()=>{
+      root.style.transition='opacity .6s ease';
+      root.style.opacity='0';
+      setTimeout(()=> root.remove(), 700);
+    }, 2300);
+  }
+})();
+</script>
+
+
+    <script>
+    /* KIDS PRO UPGRADE: splash hide & menu brand */
+    (function(){
+      function hideSplash(){
+        const el=document.getElementById('splashOverlay');
+        if(!el) return;
+        setTimeout(()=>{ el.style.transition='opacity .6s ease'; el.style.opacity='0';
+          setTimeout(()=>el.remove(),700);
+        }, 2000);
+      }
+      function isVisible(el){ return !!(el && el.offsetParent !== null); }
+      function updateMenuBrand(){
+        const brand = document.getElementById('menuBrand');
+        if(!brand) return;
+        const menuCandidates = ['#menu','.menu-screen','#main-menu','#home','.home-screen'];
+        let show=false;
+        for(const sel of menuCandidates){
+          const n = document.querySelector(sel);
+          if(n && (n.classList.contains('active') || isVisible(n))){ show=true; break; }
+        }
+        brand.style.display = show ? 'block' : 'none';
+      }
+      window.addEventListener('load', ()=>{ hideSplash(); updateMenuBrand(); });
+      const mo = new MutationObserver(updateMenuBrand);
+      mo.observe(document.body, {attributes:true, childList:true, subtree:true});
+      window.addEventListener('hashchange', updateMenuBrand);
+      document.addEventListener('click', e=>{
+        if(e.target.closest('[data-screen],[data-action="open-menu"]')){
+          setTimeout(updateMenuBrand, 50);
+        }
+      }, true);
+    })();
+    </script>
+    
+
+<script>
+/* KIDS PRO CLEANUP: remove debug class label permanently */
+document.addEventListener("DOMContentLoaded", ()=>{
+  try {
+    const root = document.querySelector("#appRoot");
+    if (root) {
+      // remove textual class from DOM attributes so it never prints above
+      root.removeAttribute("class");
+    }
+  } catch(e){}
+});
+</script>
+
+
+<script>
+/* CHEVRONBUSTER: remove '>' text & pseudo-elements globally */
+(function(){
+  function killTextChevrons(root){
+    try{
+      const w=document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const junk=[]; while(w.nextNode()){
+        const t=w.currentNode.nodeValue;
+        if(t && t.trim()==='>'){ junk.push(w.currentNode); }
+      }
+      junk.forEach(n=> n.parentNode && n.parentNode.removeChild(n));
+    }catch(e){}
+  }
+  function killPseudoChevrons(root){
+    try{
+      const all = root.querySelectorAll('*');
+      all.forEach(el=>{
+        const b=getComputedStyle(el,'::before').content;
+        const a=getComputedStyle(el,'::after').content;
+        if(b && (b.replaceAll('"','').trim()==='>' || b.replaceAll("'",'').trim()==='>')){
+          el.classList.add('nochev');
+        }
+        if(a && (a.replaceAll('"','').trim()==='>' || a.replaceAll("'",'').trim()==='>')){
+          el.classList.add('nochev');
+        }
+      });
+    }catch(e){}
+  }
+  function sweep(){
+    const root = document.body || document;
+    killTextChevrons(root);
+    killPseudoChevrons(root);
+  }
+  document.addEventListener('DOMContentLoaded', ()=>{
+    sweep();
+    document.body && (document.body.style.visibility='visible');
+  });
+  let tries=0; const iv=setInterval(()=>{ sweep(); if(++tries>10) clearInterval(iv); }, 200);
+  const mo=new MutationObserver(()=>sweep());
+  mo.observe(document.documentElement, {childList:true, subtree:true, attributes:true});
+  window.addEventListener('beforeunload',()=>mo.disconnect());
+})();
+</script>
+<style>
+/* CHEVRONBUSTER: neutralize pseudo content when flagged */
+.nochev::before, .nochev::after{ content:"" !important; }
+</style>
+
+</body>
+</html>
+
+<style>/* KIDS PRO UPGRADE */ .game-header,.header-bar{display:none!important}</style>

@@ -1,0 +1,3 @@
+Colorinka v4.6
+- Cleanup: removed visible `class="game-root"` debug label by stripping class attribute on DOMContentLoaded.
+- Change is appended near </body> in index.html and marked with 'KIDS PRO CLEANUP'.

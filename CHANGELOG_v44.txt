@@ -1,0 +1,9 @@
+Patched files:
+ - jghg-main/index.html
+ - manifest.webmanifest
+ - jghg-main/manifest.webmanifest
+
+Changes:
+- Removed theme-candy class -> replaced with game-root.
+- Removed any Colorinka text from index.html (brand, splash, etc).
+- Emptied <title> and manifest name/short_name.

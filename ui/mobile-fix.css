@@ -1,0 +1,41 @@
+/* Mobile fix for top bar crowding/overflow */
+@media (max-width: 720px){
+  header.topbar{
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: max(8px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) 8px max(10px, env(safe-area-inset-left));
+    background: rgba(7,16,40,0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .topbar .brand-left{ display:flex; align-items:center; gap:8px; }
+  .topbar .brand-logo{ width:32px; height:32px; border-radius:10px; }
+  .topbar .toolbar-center{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 10px;
+    padding: 6px 8px;
+    border-radius: 14px;
+    background: rgba(19,30,63,.45);
+    border: 1px solid rgba(49,64,107,.6);
+  }
+  .topbar .toolbar-center label{ font-weight: 600; opacity: .95; }
+  .topbar .toolbar-center input[type="range"]{
+    width: clamp(90px, 28vw, 150px);
+  }
+  .topbar .spacer-right{ width: 10px; } /* tiny spacer to keep 3-col grid happy */
+  :root{ --hdr-h: 64px; }
+  body, main, .page, .viewport, #game, #app{ margin-top: var(--hdr-h); }
+}
+
+@media (max-width: 420px){
+  .topbar .toolbar-center label{ display:none; }
+  .topbar .toolbar-center input[type="range"]{ width: clamp(90px, 32vw, 130px); }
+}

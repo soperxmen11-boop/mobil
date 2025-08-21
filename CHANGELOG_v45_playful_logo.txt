@@ -1,0 +1,5 @@
+Colorinka v4.5 (playful logo)
+- Added assets/branding/colorinka-logo.png (1024px) for splash & menu.
+- Injected animated splash overlay with the Colorinka logo only (no text).
+- Added #menuBrand logo block (auto-show on menu/home screens; hides during gameplay).
+- No gameplay changes. All injections marked with /* KIDS PRO UPGRADE */.

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <title>Colorinka Circular Mascot</title>
+  <defs>
+    <!-- Soft shadow for depth -->
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#2b1a0e" flood-opacity="0.25"/>
+    </filter>
+    <!-- Palette dot colors -->
+    <linearGradient id="blueDot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4FC3F7"/>
+      <stop offset="100%" stop-color="#0288D1"/>
+    </linearGradient>
+    <linearGradient id="greenDot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8BC34A"/>
+      <stop offset="100%" stop-color="#43A047"/>
+    </linearGradient>
+    <linearGradient id="redDot" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF7043"/>
+      <stop offset="100%" stop-color="#E64A19"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circle crop (no background rectangle: stays transparent) -->
+  <clipPath id="circleCrop">
+    <circle cx="96" cy="96" r="88"/>
+  </clipPath>
+
+  <g clip-path="url(#circleCrop)" filter="url(#softShadow)">
+    <!-- Base head circle -->
+    <circle cx="96" cy="96" r="78" fill="#FFA726" stroke="#5D2C14" stroke-width="10"/>
+
+    <!-- Cap / palette band -->
+    <path d="M36,70 C60,44 132,44 156,70
+             Q152,74 146,78 C120,60 72,60 46,78 Q40,74 36,70 Z"
+          fill="#FFC64D" stroke="#5D2C14" stroke-width="10" stroke-linejoin="round"/>
+
+    <!-- Dots on cap -->
+    <circle cx="70" cy="64" r="10" fill="url(#redDot)" stroke="#5D2C14" stroke-width="4"/>
+    <circle cx="96" cy="62" r="10" fill="url(#blueDot)" stroke="#5D2C14" stroke-width="4"/>
+    <circle cx="122" cy="64" r="10" fill="url(#greenDot)" stroke="#5D2C14" stroke-width="4"/>
+
+    <!-- Face -->
+    <circle cx="74" cy="98" r="8" fill="#5D2C14"/>
+    <circle cx="118" cy="98" r="8" fill="#5D2C14"/>
+
+    <!-- Smile -->
+    <path d="M76,118 C88,130 104,130 116,118" fill="none" stroke="#5D2C14" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Cheeks -->
+    <circle cx="60" cy="114" r="7" fill="#FFB74D"/>
+    <circle cx="132" cy="114" r="7" fill="#FFB74D"/>
+  </g>
+
+  <!-- Optional gentle pulse animation (disabled by default).
+       To enable, uncomment the group below or add a CSS animation to the main <g>. -->
+  <!--
+  <style>
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+    g { transform-origin: 96px 96px; animation: pulse 2.4s ease-in-out infinite; }
+  </style>
+  -->
+</svg>
